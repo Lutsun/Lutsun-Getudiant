@@ -1,0 +1,229 @@
+/* ============================================
+   STYLE SIMPLE POUR LA LISTE DES ÉTUDIANTS
+   ============================================ */
+
+.liste-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* En-tête */
+.liste-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #C62828;
+}
+
+.liste-header h2 {
+    color: #333;
+    margin: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.liste-header h2 i {
+    color: #C62828;
+}
+
+/* Bouton Ajouter */
+.btn-ajouter {
+    background: #C62828;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.btn-ajouter:hover {
+    background: #C62828;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+}
+
+/* Liste vide */
+.liste-vide {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px dashed #ddd;
+}
+
+.liste-vide i {
+    font-size: 60px;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.liste-vide p {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Conteneur de table */
+.table-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+}
+
+/* Table */
+.table-etudiants {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-etudiants thead {
+    background: #C62828;
+    color: white;
+}
+
+.table-etudiants th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.table-etudiants tbody tr {
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.table-etudiants tbody tr:hover {
+    background: #f8fafc;
+}
+
+.table-etudiants td {
+    padding: 15px;
+    color: #444;
+}
+
+/* Colonnes spécifiques */
+.numero {
+    font-weight: bold;
+    color: #C62828;
+    text-align: center;
+    width: 50px;
+}
+
+.prenom {
+    font-weight: 600;
+    color: #333;
+}
+
+.nom {
+    color: #555;
+}
+
+.telephone {
+    color: #666;
+    font-family: monospace;
+}
+
+.classe {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background: #f0f7ff;
+    color: #C62828;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-modifier {
+    background: #ffc107;
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+}
+
+.btn-modifier:hover {
+    background: #e0a800;
+    color: #000;
+}
+
+.btn-supprimer {
+    background: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+}
+
+.btn-supprimer:hover {
+    background: #c82333;
+}
+
+/* Pied de table */
+.table-footer {
+    padding: 15px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+    color: #666;
+    font-size: 14px;
+}
+
+.table-footer p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-footer i {
+    color: #4a90e2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .liste-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .btn-modifier, .btn-supprimer {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .table-etudiants {
+        display: block;
+        overflow-x: auto;
+    }
+}

@@ -6,16 +6,16 @@
 <div class="liste-container">
     <div class="liste-header">
         <h2><i class="fas fa-chalkboard-teacher"></i> Liste des classes</h2>
-        <a href="/classe/create" class="btn-ajouter">
+        <a href="{{ route('classe.create') }}" class="btn-ajouter">
             <i class="fas fa-plus"></i> Ajouter une classe
         </a>
     </div>
 
-    @if(empty($classes))
+    @if($classes->isEmpty())
         <div class="liste-vide">
             <i class="fas fa-chalkboard"></i>
             <p>Aucune classe enregistrée</p>
-            <a href="/classe/create" class="btn-ajouter">
+            <a href="{{ route('classe.create') }}" class="btn-ajouter">
                 <i class="fas fa-plus"></i> Ajouter la première classe
             </a>
         </div>
@@ -26,11 +26,8 @@
                     <tr>
                         <th>#</th>
                         <th>Nom</th>
-                        <th>Code</th>
                         <th>Niveau</th>
                         <th>Effectif</th>
-                        <th>Enseignant</th>
-                        <th>Salle</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -38,22 +35,19 @@
                     @foreach($classes as $index => $classe)
                     <tr>
                         <td class="numero">{{ $index + 1 }}</td>
-                        <td class="prenom">{{ $classe['nom'] ?? '' }}</td>
-                        <td class="nom">{{ $classe['code'] ?? '' }}</td>
-                        <td class="telephone">{{ $classe['niveau'] ?? '' }}</td>
-                        <td class="classe">
-                            <span class="badge-effectif">{{ $classe['effectif'] ?? 0 }} étudiant(s)</span>
-                        </td>
-                        <td class="classe">
-                            {{ $classe['enseignant'] ?? 'Non assigné' }}
-                        </td>
-                        <td class="classe">
-                            {{ $classe['salle'] ?? 'Non défini' }}
+                        <td class="prenom">{{ $classe->nom }}</td>
+                        <td class="nom">{{ $classe->niveau }}</td>
+                        <td class="telephone">
+                            <span class="badge-effectif">{{ $classe->effectif }} étudiant(s)</span>
                         </td>
                         <td class="actions">
-                            <a href="/classe/edit/{{ $classe['id'] ?? $index }}" class="btn-modifier">
+                            <a href="{{ route('classe.edit', $classe->id) }}" class="btn-modifier">
                                 <i class="fas fa-edit"></i> Modifier
                             </a>
+                            <button onclick="supprimerClasse('{{ $classe->nom }}', '{{ $classe->id }}')" 
+                                    class="btn-supprimer">
+                                <i class="fas fa-trash"></i> Supprimer
+                            </button>
                         </td>
                     </tr>
                     @endforeach
@@ -61,7 +55,8 @@
             </table>
             
             <div class="table-footer">
-                <p><i class="fas fa-info-circle"></i> Total : {{ count($classes) }} classe(s)</p>
+                <p><i class="fas fa-info-circle"></i> Total : {{ $classes->count() }} classe(s) • 
+                   Total étudiants : {{ $classes->sum('effectif') }}</p>
             </div>
         </div>
     @endif
@@ -69,19 +64,21 @@
 
 <script>
 function supprimerClasse(nom, id) {
-    if (confirm('Voulez-vous vraiment supprimer la classe ' + nom + ' ?')) {
+    if (confirm('Voulez-vous vraiment supprimer la classe "' + nom + '" ?\n\nAttention : Cette action est irréversible.')) {
         fetch('/classe/delete/' + id, {
             method: 'DELETE',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }
         })
-        .then(response => {
-            if(response.ok) {
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
                 location.reload();
             } else {
-                alert('Erreur lors de la suppression');
+                alert(data.message || 'Erreur lors de la suppression');
             }
         })
         .catch(error => {
@@ -92,4 +89,15 @@ function supprimerClasse(nom, id) {
     return false;
 }
 </script>
+
+<style>
+.badge-effectif {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+</style>
 @endsection

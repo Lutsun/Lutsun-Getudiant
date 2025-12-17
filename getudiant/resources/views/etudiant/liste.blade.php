@@ -49,7 +49,7 @@
                             @endif
                         </td>
                         <td class="actions">
-                            <a href="/etudiant/edit/{{ $etudiant->id }}" class="btn-modifier">
+                            <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn-modifier">
                                 <i class="fas fa-edit"></i> Modifier
                             </a>
                             <button onclick="supprimerEtudiant('{{ $etudiant->id }}', '{{ $etudiant->prenom }}')" 

@@ -63,6 +63,7 @@ class EtudiantController extends Controller
             ->with('success', 'Étudiant ajouté avec succès!');
     }
 
+    // Méthode pour AFFICHER le formulaire de modification
     public function edit($id)
     {
         $etudiant = Etudiant::findOrFail($id);
@@ -70,6 +71,7 @@ class EtudiantController extends Controller
         return view('etudiant.edit', compact('etudiant', 'classes'));
     }
 
+    // Méthode pour TRAITER la modification
     public function update(Request $request, $id)
     {
         $etudiant = Etudiant::findOrFail($id);

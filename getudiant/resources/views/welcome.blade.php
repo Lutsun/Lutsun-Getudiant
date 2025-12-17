@@ -43,7 +43,7 @@
                     </li>
                     <li class="{{ request()->is('classes*') ? 'active' : '' }}">
                         <a href="/classe/create">
-                            <i class="fas fa-add"></i>
+                            <i class="fas fa-chalkboard-teacher"></i>
                             <span>Ajouter une classe</span>
                         </a>
                         <a href="/classe/liste">

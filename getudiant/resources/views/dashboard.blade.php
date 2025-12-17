@@ -58,7 +58,7 @@
                 <i class="fas fa-user-plus"></i>
                 Ajouter un étudiant
             </a>
-            <a href="/classes/create" class="btn btn-success">
+            <a href="/classe/create" class="btn btn-success">
                 <i class="fas fa-plus-circle"></i>
                 Créer une classe
             </a>

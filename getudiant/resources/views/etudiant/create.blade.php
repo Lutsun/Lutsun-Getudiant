@@ -8,27 +8,30 @@
         <i class="fas fa-user-plus"></i> Ajouter un nouvel étudiant
     </h2>
     
-    <form action="/ajouter" method="POST">
+    <form action="/save" method="POST">
         @csrf
-        @method('POST')
-        
+        @method ('POST')
         <div class="form-group">
-            <label for="prenom"><i class="fas fa-user"></i> Prénom</label>
+            <label for="prenom"><i class="fas fa-user"></i> Prénom *</label>
             <input type="text" id="prenom" name="prenom" class="form-control" required 
                    placeholder="Entrez le prénom de l'étudiant">
         </div>
         
         <div class="form-group">
-            <label for="nom"><i class="fas fa-user-tag"></i> Nom</label>
-            <input type="text" id="nom" name="nom" class="form-control" 
+            <label for="nom"><i class="fas fa-user-tag"></i> Nom *</label>
+            <input type="text" id="nom" name="nom" class="form-control" required
                    placeholder="Entrez le nom de famille">
         </div>
         
         <div class="form-group">
-            <label for="adresse"> 
-                <i class="fas fa-map-marker-alt"></i> Adresse</label>
+            <label for="adresse"><i class="fas fa-map-marker-alt"></i> Adresse</label>
             <input type="text" id="adresse" name="adresse" class="form-control" 
                    placeholder="123 Rue Exemple, Ville, Pays">
+        </div>
+        
+        <div class="form-group">
+            <label for="date_naissance"><i class="fas fa-birthday-cake"></i> Date de naissance</label>
+            <input type="date" id="date_naissance" name="date_naissance" class="form-control">
         </div>
         
         <div class="form-group">
@@ -38,13 +41,20 @@
         </div>
         
         <div class="form-group">
-            <label for="classe"><i class="fas fa-chalkboard"></i> Classe</label>
-            <select id="classe" name="classe" class="form-control">
+            <label for="matricule"><i class="fas fa-id-card"></i> Matricule</label>
+            <input type="text" id="matricule" name="matricule" class="form-control" 
+                   placeholder="Laisser vide pour générer automatiquement">
+        </div>
+        
+        <div class="form-group">
+            <label for="classe_id"><i class="fas fa-chalkboard"></i> Classe</label>
+            <select id="classe_id" name="classe_id" class="form-control">
                 <option value="">Sélectionnez une classe</option>
-                <option value="1">Classe A - Mathématiques</option>
-                <option value="2">Classe B - Physique</option>
-                <option value="3">Classe C - Chimie</option>
-                <option value="4">Classe D - Informatique</option>
+                @foreach($classes as $classe)
+                <option value="{{ $classe->id }}">
+                    {{ $classe->nom }} - {{ $classe->niveau }}
+                </option>
+                @endforeach
             </select>
         </div>
         
@@ -52,7 +62,7 @@
             <button type="submit" class="btn" style="flex: 1;">
                 <i class="fas fa-save"></i> Enregistrer l'étudiant
             </button>
-            <a href="/etudiants" class="btn btn-secondary" style="flex: 1; text-align: center;">
+            <a href="/etudiant/liste" class="btn btn-secondary" style="flex: 1; text-align: center;">
                 <i class="fas fa-times"></i> Annuler
             </a>
         </div>

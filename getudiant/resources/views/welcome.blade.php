@@ -33,7 +33,7 @@
                     <li class="{{ request()->is('etudiants*') ? 'active' : '' }}">
                         <a href="/etudiant/create">
                             <!-- ajout d'etudiant -->
-                             <i class="fas fa-add"></i>
+                             <i class="fas fa-user-plus"></i>
                             <span>Ajouter un etudiant</span>
                         </a>
                         <a href="/etudiant/liste">

@@ -1,15 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     //  $prenom= 'Serge';
-//     $tabetudiant = ['Serge', 'Mamour', 'Mouhamed', 'Ibrahima'];
-//     return view('welcome', compact('tabetudiant'));
-// });
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route de base
 Route::get('/', function () {
     return view('dashboard');
 });
@@ -17,15 +9,12 @@ Route::get('/', function () {
 // Etudiant Routes
 Route::get('/etudiant/liste', [App\Http\Controllers\EtudiantController::class, 'liste']);
 Route::get('/etudiant/create', [App\Http\Controllers\EtudiantController::class, 'ajouter']);
-Route::post('/save', [App\Http\Controllers\EtudiantController::class, 'etudiant.store']);
-Route::put('/update', [App\Http\Controllers\EtudiantController::class, 'update']);
+Route::post('/save', [App\Http\Controllers\EtudiantController::class, 'store']);
+Route::get('/etudiant/edit/{id}', [App\Http\Controllers\EtudiantController::class, 'edit'])->name('etudiant.edit');
+Route::post('/etudiant/update/{id}', [App\Http\Controllers\EtudiantController::class, 'update'])->name('etudiant.update');
+Route::delete('/etudiant/delete/{id}', [App\Http\Controllers\EtudiantController::class, 'destroy'])->name('etudiant.delete');
 
-// classe Routes
-Route::get('/classe/create', [App\Http\Controllers\ClasseController::class, 'create']);
-Route::get('/classe/liste', [App\Http\Controllers\ClasseController::class, 'liste']);
-Route::get('/edit/{prenom}', function ($prenom) {
-    return view('update', compact('prenom'));
-});
-
-
-
+// Classe Routes (à ajouter si vous voulez gérer les classes)
+Route::get('/classes', [App\Http\Controllers\ClasseController::class, 'index'])->name('classes.index');
+Route::get('/classe/create', [App\Http\Controllers\ClasseController::class, 'create'])->name('classe.create');
+Route::post('/classe/store', [App\Http\Controllers\ClasseController::class, 'store'])->name('classe.store');

@@ -22,6 +22,7 @@ Route::put('/update', [App\Http\Controllers\EtudiantController::class, 'update']
 
 // classe Routes
 Route::get('/classe/create', [App\Http\Controllers\ClasseController::class, 'create']);
+Route::get('/classe/liste', [App\Http\Controllers\ClasseController::class, 'liste']);
 Route::get('/edit/{prenom}', function ($prenom) {
     return view('update', compact('prenom'));
 });

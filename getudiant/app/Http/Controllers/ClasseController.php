@@ -9,7 +9,7 @@ class ClasseController extends Controller
     /**
      * Afficher la liste des classes
      */
-    public function index()
+    public function liste()
     {
         // Pour l'exemple, on crée des données fictives
         $classes = [
@@ -42,7 +42,7 @@ class ClasseController extends Controller
             ]
         ];
 
-        return view('liste_classe', compact('classes'));
+        return view('classe.liste', compact('classes'));
     }
 
     /**

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/liste.css') }}">
     <link rel="stylesheet" href="{{ asset('css/createclasse.css') }}">
+     <link rel="stylesheet" href="{{ asset('css/listeclasse.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>

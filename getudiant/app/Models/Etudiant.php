@@ -30,6 +30,12 @@ class Etudiant extends Model
         return $this->belongsTo(Classe::class);
     }
 
+    // Relation avec les inscriptions
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
+
     // Accessor pour le nom complet
     public function getNomCompletAttribute()
     {

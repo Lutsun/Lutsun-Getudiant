@@ -51,10 +51,14 @@
                             <span>Liste des Classes</span>
                         </a>
                     </li>
-                    <li class="{{ request()->is('inscriptions*') ? 'active' : '' }}">
-                        <a href="/inscriptions">
+                    <li class="{{ request()->is('inscription*') ? 'active' : '' }}">
+                        <a href="{{ route('inscription.create') }}">
                             <i class="fas fa-file-signature"></i>
-                            <span>Inscriptions</span>
+                            <span>Ajouter une inscription</span>
+                        </a>
+                        <a href="{{ route('inscription.liste') }}">
+                            <i class="fas fa-list"></i>
+                            <span>Liste des inscriptions</span>
                         </a>
                     </li>
                 </ul>

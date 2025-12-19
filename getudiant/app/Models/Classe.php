@@ -20,4 +20,9 @@ class Classe extends Model
     {
         return $this->hasMany(Etudiant::class);
     }
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
 }

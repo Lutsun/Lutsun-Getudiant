@@ -368,6 +368,25 @@ body {
     background: #1a252f;
 }
 
+.btn-warning {
+    background: var(--warning);
+}
+.btn-warning:hover {
+    background: #e67c00;
+}
+.btn-danger {
+    background: var(--danger);
+}
+.btn-danger:hover {
+    background: #d32f2f;
+}
+.btn-info {
+    background: var(--info);
+}
+.btn-info:hover {
+    background: #1976d2;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

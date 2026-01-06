@@ -50,7 +50,7 @@
             <h3>Actions rapides</h3>
         </div>
         <div class="quick-actions">
-            <a href="/etudiant/create" class="btn">
+            <a href="/etudiant/create" class="btn btn-danger">
                 <i class="fas fa-user-plus"></i>
                 Ajouter un étudiant
             </a>
@@ -66,7 +66,7 @@
                 <i class="fas fa-user-tie"></i>
                 Ajouter un professeur
             </a>
-            <a href="/etudiant/liste" class="btn btn-info">
+            <a href="/etudiant/liste" class="btn btn-warning">
                 <i class="fas fa-list"></i>
                 Voir tous les étudiants
             </a>

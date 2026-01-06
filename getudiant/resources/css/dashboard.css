@@ -232,36 +232,49 @@
 
 /* Styles de bordure pour chaque bouton */
 .quick-actions .btn {
-    border-color: #C62828; /* Rouge */
+    border-color: var(--primary);
 }
 
 .quick-actions .btn i {
-    color: #C62828;
+    color: var(--primary);
 }
 
 .quick-actions .btn-success {
-    border-color: #2E7D32; /* Vert */
+    border-color: var(--success);
+    background: rgba(76, 175, 80, 0.1);
 }
 
 .quick-actions .btn-success i {
-    color: #2E7D32;
+    color: var(--success);
 }
 
 .quick-actions .btn-secondary {
-    border-color: #6c757d; /* Gris */
+    border-color: var(--secondary);
+    background: rgba(44, 62, 80, 0.1);
 }
 
 .quick-actions .btn-secondary i {
-    color: #6c757d;
+    color: var(--secondary);
 }
 
 .quick-actions .btn-info {
-    border-color: #0288D1; /* Bleu */
+    border-color: var(--info);
+    background: rgba(33, 150, 243, 0.1);
 }
 
 .quick-actions .btn-info i {
-    color: #0288D1;
+    color: var(--info);
 }
+
+.quick-actions .btn-warning {
+    border-color: var(--warning);
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.quick-actions .btn-warning i {
+    color: var(--warning);
+}
+
 
 /* Responsive pour les boutons */
 @media (max-width: 1200px) {

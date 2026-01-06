@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/liste.css') }}">
     <link rel="stylesheet" href="{{ asset('css/createclasse.css') }}">
-     <link rel="stylesheet" href="{{ asset('css/listeclasse.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/listeclasse.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -30,30 +31,63 @@
                             <span>Tableau de bord</span>
                         </a>
                     </li>
+                    
+                    <!-- Étudiants -->
                     <li class="{{ request()->is('etudiants*') ? 'active' : '' }}">
+                        <div class="sidebar-section-title">
+                            <i class="fas fa-users"></i>
+                            <span>Étudiants</span>
+                        </div>
                         <a href="/etudiant/create">
-                            <!-- ajout d'etudiant -->
-                             <i class="fas fa-user-plus"></i>
-                            <span>Ajouter un etudiant</span>
+                            <i class="fas fa-user-plus"></i>
+                            <span>Ajouter un étudiant</span>
                         </a>
                         <a href="/etudiant/liste">
-                            <i class="fas fa-users"></i>
-                            <span>Liste des etudiants</span>
+                            <i class="fas fa-list"></i>
+                            <span>Liste des étudiants</span>
                         </a>
                     </li>
+                    
+                    <!-- Classes -->
                     <li class="{{ request()->is('classes*') ? 'active' : '' }}">
-                        <a href="/classe/create">
+                        <div class="sidebar-section-title">
                             <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Classes</span>
+                        </div>
+                        <a href="/classe/create">
+                            <i class="fas fa-plus-circle"></i>
                             <span>Ajouter une classe</span>
                         </a>
                         <a href="/classe/liste">
-                            <i class="fas fa-chalkboard"></i>
+                            <i class="fas fa-list"></i>
                             <span>Liste des Classes</span>
                         </a>
                     </li>
+                    
+                    <!-- Professeurs -->
+                    <li class="{{ request()->is('professeur*') ? 'active' : '' }}">
+                        <div class="sidebar-section-title">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Professeurs</span>
+                        </div>
+                        <a href="{{ route('professeur.create') }}">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Ajouter un professeur</span>
+                        </a>
+                        <a href="{{ route('professeur.liste') }}">
+                            <i class="fas fa-list"></i>
+                            <span>Liste des professeurs</span>
+                        </a>
+                    </li>
+                    
+                    <!-- Inscriptions -->
                     <li class="{{ request()->is('inscription*') ? 'active' : '' }}">
-                        <a href="{{ route('inscription.create') }}">
+                        <div class="sidebar-section-title">
                             <i class="fas fa-file-signature"></i>
+                            <span>Inscriptions</span>
+                        </div>
+                        <a href="{{ route('inscription.create') }}">
+                            <i class="fas fa-plus-circle"></i>
                             <span>Ajouter une inscription</span>
                         </a>
                         <a href="{{ route('inscription.liste') }}">

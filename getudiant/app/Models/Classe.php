@@ -25,4 +25,10 @@ class Classe extends Model
     {
         return $this->hasMany(Inscription::class);
     }
+
+    // Relation avec le professeur (si une classe a un professeur responsable)
+    public function professeur()
+    {
+        return $this->belongsTo(Professeur::class);
+    }
 }

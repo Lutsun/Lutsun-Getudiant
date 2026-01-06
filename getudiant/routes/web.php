@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Etudiant;
 use App\Models\Classe;
 use App\Models\Inscription;
+use App\Models\Professeur;
 
 // Route de base redirigeant vers le tableau de bord
 Route::get('/', function () {
@@ -16,10 +17,14 @@ Route::get('/', function () {
     // Nombre total d'inscriptions
     $totalInscriptions = Inscription::count();
     
+    // Nombre total de professeurs
+    $totalProfesseurs = Professeur::where('statut', 'actif')->count();
+    
     return view('dashboard', compact(
         'totalEtudiants',
         'totalClasses',
-        'totalInscriptions'
+        'totalInscriptions',
+        'totalProfesseurs'
     ));
 })->name('dashboard');
 
@@ -46,3 +51,11 @@ Route::post('/inscription/store', [App\Http\Controllers\InscriptionController::c
 Route::get('/inscription/edit/{id}', [App\Http\Controllers\InscriptionController::class, 'edit'])->name('inscription.edit');
 Route::put('/inscription/update/{id}', [App\Http\Controllers\InscriptionController::class, 'update'])->name('inscription.update');
 Route::delete('/inscription/delete/{id}', [App\Http\Controllers\InscriptionController::class, 'destroy'])->name('inscription.delete');
+
+// Professeur Routes
+Route::get('/professeur/liste', [App\Http\Controllers\ProfesseurController::class, 'liste'])->name('professeur.liste');
+Route::get('/professeur/create', [App\Http\Controllers\ProfesseurController::class, 'create'])->name('professeur.create');
+Route::post('/professeur/store', [App\Http\Controllers\ProfesseurController::class, 'store'])->name('professeur.store');
+Route::get('/professeur/edit/{id}', [App\Http\Controllers\ProfesseurController::class, 'edit'])->name('professeur.edit');
+Route::put('/professeur/update/{id}', [App\Http\Controllers\ProfesseurController::class, 'update'])->name('professeur.update');
+Route::delete('/professeur/delete/{id}', [App\Http\Controllers\ProfesseurController::class, 'destroy'])->name('professeur.delete');

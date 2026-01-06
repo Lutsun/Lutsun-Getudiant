@@ -33,6 +33,15 @@
             <div class="stat-value">{{ $totalInscriptions }}</div>
             <div class="stat-label">Inscriptions totales</div>
         </div>
+
+        <div class="stat-card info">
+            <div class="stat-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="stat-value">{{ $totalProfesseurs }}</div>
+            <div class="stat-label">Professeurs</div>
+        </div>
+
     </div>
     
     <!-- Actions rapides -->
@@ -52,6 +61,10 @@
             <a href="{{ route('inscription.create') }}" class="btn btn-secondary">
                 <i class="fas fa-file-medical"></i>
                 Nouvelle inscription
+            </a>
+            <a href="/professeur/create" class="btn btn-info">
+                <i class="fas fa-user-tie"></i>
+                Ajouter un professeur
             </a>
             <a href="/etudiant/liste" class="btn btn-info">
                 <i class="fas fa-list"></i>
